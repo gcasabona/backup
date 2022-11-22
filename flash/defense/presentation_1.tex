@@ -1,0 +1,683 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%adding video package
+\usepackage{media9}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{parskip}
+%\usepackage{multimedia}
+\usepackage{pdfpc-commands}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Rotating Stars]{Effects on Stellar Evolution From High Mass and Rotation} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Gabriel Casabona} % Your name
+\institute[UMassD] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+University of Massachusetts Dartmouth \\ % Your institution for the title page
+\medskip
+\textit{Stellar Structure Final PHY 510} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+%\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{First Section} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+%\begin{frame}
+%\frametitle{Paragraphs of Text}
+%Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
+
+%Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
+%\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Introduction}
+
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{rotating_star.jpg}
+    \end{center}
+  \end{figure}
+
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{movie}
+%\begin{figure}[h!]
+%\centering
+%\movie[label=show3,width=1.0\textwidth,poster
+  %     ,autostart,showcontrols,loop]{out.mp4}
+	\inlineMovie[loop&autostart]{video_30frame_temperature_lev9.mov}{height=0.7\textheight}
+	
+	\caption{caption}
+ \end{figure}
+  \end{frame}
+
+
+
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{media9}
+\includemedia[activate=pageopen,
+             width=240pt,height=150pt,
+             addresource=video_30frame_temperature_lev9.mov,
+  flashvars={%
+src=video_30frame_temperature_lev9.mov      % same path as in addresource!
+%&scaleMode=stretch % removes black bars
+&autoPlay=true      % optional configuration
+&loop=true          % variables
+}
+]{}{StrobeMediaPlayback.swf}
+\end{frame}
+
+
+
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Rotational Effects}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.5\linewidth]{circular.png}
+	    \caption{Circulation currents caused by rotation in a 20 solar mass star with an initial rotational velocity of 300 $\frac{km}{s}$. Meynet \& Maeder 2002}
+    \end{center}
+  \end{figure}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Turbulence and Instability}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.50\linewidth]{instability.png}
+	    \caption{Li \& Li 2006}
+    \end{center}
+  \end{figure}
+
+\begin{itemize}
+\item Kelvin-Helmholtz "fingers" 
+\item Rayleigh-Taylor
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Method}
+
+\begin{itemize}
+	\item Use \textbf{high\_rot\_darkening} within \textbf{mesa/star}
+	\item Within \textbf{inlist\_high\_rot\_darkening}, manipulate initial mass and rotation
+	\item Ran code on \textit{Carnie}, provided by UMassD
+	\item Analyzed data with \textbf{python} with added module \textbf{mesa\_reader}
+	\item Hydrogen burning limits time of run
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Mass Loss}
+  \begin{itemize}
+	  \item $\frac{dM(\Omega)}{dt} = \frac{dM(0)}{dt}(\frac{1}{1-\frac{\Omega}{\Omega_{crit}}})^\zeta$ (Paxton \textit{et al.} 2013) 
+    \item $\Omega$ = surface angular velocity, $\Omega_{crit}$ = critical angular velocity
+    \item $\Omega_{crit}^2 = (1 - \frac{L}{L_{Edd}})\frac{GM}{R^3}$
+    \item $L_{Edd} = \frac{4\pi cGM}{\kappa}$
+    \item In \textbf{MESAstar}, $\zeta$ = 0.43 (Langer 1998)
+    \item Solar winds	    
+	  
+  \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Mass Loss}
+	\begin{columns}[c]
+	\column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_3M/time_v_mass_omega.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+	\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_3M/time_v_mass_omega.png}
+    \end{center}
+  \end{figure}
+
+	\end{columns}
+\end{frame}
+
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Mass Loss}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_25M/time_v_mass_omega.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_25M/time_v_mass_omega.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Mass Loss}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_50M/time_v_mass_omega.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_50M/time_v_mass_omega.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Mass Loss}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_100M/time_v_mass_omega.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_100M/time_v_mass_omega.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Luminosity}
+  \begin{itemize}
+	  \item $L_{proj} = 4\int \int_{d\Sigma \bullet \ell >0} Fd\Sigma \bullet \ell$ (Paxton \textit{et al.} 2019)
+    \item Luminosity projected along the line of sight to the observer 
+    \item Assumed to be isotropic
+    \item $T_{eff,proj} = (\frac{L_{proj}}{\sigma \Sigma_{proj}})^\frac{1}{4} $
+    \item From Stefan-Boltzmann Law
+
+  \end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Triple Alpha}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.7\linewidth]{Triple_Alpha.png}
+    \end{center}
+  \end{figure}
+
+\end{frame}
+
+
+
+%------------------------------------------------
+
+\begin{frame}
+        \frametitle{Proton-Proton Chain}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.4\linewidth]{pp.jpg}
+    \end{center}
+  \end{figure}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+        \frametitle{Carbon-Nitrogen-Oxygen Chain}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.6\linewidth]{CNO.png}
+    \end{center}
+  \end{figure}
+
+\end{frame}
+
+
+%------------------------------------------------
+
+
+
+\begin{frame}
+\frametitle{Luminosity}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_100M/time_v_enuc.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_100M/time_v_enuc.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Luminosity}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_100M/time_v_lum_rad.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_100M/time_v_lum_rad.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Luminosity}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_50M/time_v_enuc.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_50M/time_v_enuc.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Luminosity}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_50M/time_v_lum_rad.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_50M/time_v_lum_rad.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Luminosity}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_25M/time_v_enuc.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_25M/time_v_enuc.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Luminosity}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_25M/time_v_lum_rad.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_25M/time_v_lum_rad.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Luminosity}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_3M/time_v_enuc.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_3M/time_v_enuc.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Luminosity}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_3M/time_v_lum_rad.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_3M/time_v_lum_rad.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Temperature}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_3M/time_v_radius_temp.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_3M/time_v_radius_temp.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Temperature}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_25M/time_v_radius_temp.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_25M/time_v_radius_temp.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Temperature}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_50M/time_v_radius_temp.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_50M/time_v_radius_temp.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Temperature}
+        \begin{columns}[c]
+        \column{0.5\textwidth}
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.5w_100M/time_v_radius_temp.png}
+    \end{center}
+  \end{figure}
+
+\column{0.5\textwidth}
+        \begin{figure}
+    \begin{center}
+      \includegraphics[width=.90\linewidth]{/home/gabriel/StellarAstro/rotation/0.9w_100M/time_v_radius_temp.png}
+    \end{center}
+  \end{figure}
+
+        \end{columns}
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Future Work}
+  \begin{itemize}
+    \item Continue to explore parameter space of rotation and mass
+    \item Roche-Lobe potential
+    \item Gravitational darkening
+    \item Doppler effect
+    \item Magnetic field
+  \end{itemize}
+\end{frame}
+
+
+\end{document} 

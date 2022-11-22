@@ -1,0 +1,1045 @@
+%  Used for...
+%
+%  1) APS New England Fall 2018 -- intro to NRHybSur3dq8 and RIFT
+%
+%
+%
+
+%\documentclass[compress]{beamer}
+\documentclass[uncompress,aspectratio=43]{beamer}  % APS
+
+\usetheme{Boadilla}
+%\usecolortheme{dolphin}
+
+% to wrap text around a figure
+\usepackage{wrapfig}
+
+\usepackage{tikz}
+
+% to wrap text around a figure
+\usepackage{wrapfig}
+
+\usepackage{setspace}
+
+% to split the top headliner
+%\usepackage{beamerthemesplit}
+
+\usepackage{multirow}
+
+\usepackage{dcolumn,epsfig}
+
+% for side captions (doesn't seem to work, neither does minipage. must use column environment)
+\usepackage{sidecap}
+
+% to displace animated graphics
+\usepackage{animate} %need the animate.sty file 
+\usepackage{graphicx} %needed if animating and creating pdf through latex -> dvi -> pdf
+
+\usepackage{algorithm}
+\usepackage{algpseudocode} % in place of algorithmic. Appears to conflict with revtex4 unless [H] option passed
+
+%allows comments for blocks of text
+\usepackage{verbatim} %with begin/end comment
+
+% fancy version of verbatim
+%\usepackage{fancyvrb}
+
+\usepackage{listings}
+
+% for fancy box options
+\usepackage{fancybox}
+
+\usepackage{tabls}
+\usepackage{subfigure}
+
+\usepackage{mathrsfs}
+
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\green}{\textcolor{green}}
+\newcommand{\ljump}{\big[\!\big[}
+\newcommand{\rjump}{\big]\!\big]}
+\newcommand{\half}{{\textstyle \frac{1}{2}}}
+\newcommand{\indspace}{\hspace{6pt}}
+\def\vecmu{{\vec{\mu}}}
+\def\MMm{ {\mathrm{MM}} } 
+\newcommand{\ta}{\ensuremath{\tilde{A}}}
+\newcommand{\cg}{\ensuremath{\tilde{\gamma}}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\cP} {{\cal P}}
+\newcommand{\cF} {{\cal F}}
+\newcommand{\cT} {{\cal T}}
+\newcommand{\cC} {{\cal C}}
+\newcommand{\cH} {{\cal H}}
+\newcommand{\nwidth}[2]{d_{#1}}
+\newcommand{\greedy}[2]{\sigma_{#1}}
+\newcommand{\triplenorm}[1]{\left| \! \right| \!\! | {#1} | \!\! \left| \! \right|}
+\newcommand {\cM} {{\cal M}}
+\newcommand {\cA} {{\cal A}}
+
+\newfloat{program}{htbp}{pgm}
+\floatname{program}{Program}
+
+%\xdefinecolor{eqncolor}{rgb}{0,0.35,0}
+\xdefinecolor{eqncolor}{rgb}{0,0,0}
+\xdefinecolor{ec}{rgb}{0,0.35,0}
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
+% fancy code -- see: http://tex.stackexchange.com/questions/176163/problem-in-adding-a-title-to-tcolorbox
+% can pass general options to minted: %\begin{pythoncode}[colback=red!5!white,colframe=red!75!black,title=My nice heading]    
+\usepackage{tcolorbox}
+\tcbuselibrary{minted,skins,breakable}
+\newtcblisting{pythoncode}[1][]{    
+  listing engine=minted,    
+  breakable,   
+  colback=bg,    
+  colframe=black!70,    
+  listing only,    
+  minted style=colorful,    
+  minted language=python,    
+  minted options={linenos=true,numbersep=3mm,texcl=true},    
+  left=5mm,enhanced,    
+  overlay={\begin{tcbclipinterior}\fill[black!25] (frame.south west)    
+            rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}},
+            #1,
+}    
+\newtcblisting{ipython}[1][]{    
+  listing engine=minted,    
+  breakable,   
+  colback=bg,    
+  colframe=black!70,    
+  listing only,    
+  minted style=colorful,    
+  minted language=python,    
+  minted options={numbersep=3mm,texcl=true},    
+  left=5mm,enhanced,    
+  overlay={\begin{tcbclipinterior}\fill[black!25] (frame.south west)    
+            rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}},
+            #1,
+}   
+
+\setbeamersize{text margin left=.05cm,text margin right=.05cm}
+
+\title[PE using NR Surrogates and RIFT]{Parameter estimation of binary black hole systems using numerical relativity surrogates and a rapid inference framework}
+
+\author[Feroz]{Feroz Hussain Shaik}
+\institute[UMass Dartmouth]{Dept. of Physics, UMass Dartmouth}
+\date[APS NES \today]{{APS New England Fall 2018 Meeting\\
+\today}
+% \\[1cm]
+%\scriptsize
+%Joint work with
+%Scott Field (U. Mass Dartmouth), Richard O'Shaughnessy (RIT), 
+%Vijay Varma (Caltech), Jacob Lange (RIT)
+%\\[.5cm]
+%{arXiv: [gr-qc]}
+}
+\scriptsize
+
+\begin{document}
+
+\frame{\titlepage
+%   \vspace{-25pt}
+%\begin{minipage}[b]{\linewidth}
+ % \vspace{20pt}
+%  \raggedright (arXiv:1304.0462)
+%\end{minipage
+
+\vspace{-39pt}
+
+  \begin{columns}[T]
+\hspace{10pt} 
+    \begin{column}{0.55\textwidth}
+%{\scriptsize
+%\noindent \blue{Collaborators}: Lawrence Kidder, Francois Foucart, Erik Schnetter,
+%Saul Teukolsky, Andy Bohn, Nils Deppe, 
+%Peter Diener, Francois Hebert, Jonas Lippuner, 
+%Jonah Miller, Christian Ott, Mark Scheel, Trevor Vincent}
+%\includegraphics[width=.95\textwidth]{/home/balzani57/GlobalBackUp/Research/talks/CommonSlides/sxs_logo_horizontal_4240px.png}
+
+    \end{column}
+    
+    \begin{column}{0.45\textwidth}
+      
+     \hspace{50pt} \includegraphics[width=.36\textwidth]{/home/frz/WORK/beamer/UMassDartmouthLogo.jpg}
+  
+    \end{column}
+    
+  \end{columns}
+
+}
+
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+		\frametitle{\Large{Outline}}
+		\tableofcontents[currentsection]
+                %\tableofcontents[currentsection,subsectionstyle=hide]
+  \end{frame}
+}
+
+\begin{frame}
+Ongoing MS Thesis Project supervised by 
+  \begin{itemize}
+    \item Scott Field (UMass Dartmouth)
+    \end{itemize}
+\medskip
+   Joint work with
+   \begin{itemize}
+   \item Jacob Lange (RIT) (RIFT+ILE)
+   \item Richard O'Shaughnessy (RIT) (RIFT+ILE)
+   \item Vijay Varma (Caltech) (NR Surrogate Model)
+  \end{itemize}
+
+\end{frame}
+
+%\begin{frame}{...and {\em many} NR simulations}
+
+%\begin{columns}
+%  \begin{column}{.45\linewidth}
+%\begin{figure}
+%\includegraphics[width=.95\textwidth]{/home/balzani57/GlobalBackUp/Research/talks/CommonSlides/sxs_logo_stacked_3775px.png}
+%\end{figure}
+%  \end{column}
+%  \begin{column}{.45\linewidth}
+%\includegraphics[width=.75\textwidth]{/home/balzani57/GlobalBackUp/Research/talks/CommonSlides/SpECViz.png}
+%  \end{column}
+%\end{columns}
+
+%\end{frame}
+
+\begin{frame}
+\frametitle{Introduction}
+
+\medskip
+GW Parameter Estimation
+\begin{itemize}
+\item Figuring out what are the properties of the binary sources using the data
+\item Usually minimum 15 parameters required
+\end{itemize}
+
+\pause
+\medskip
+Parameters include
+\begin{itemize}
+\item Masses and spins of black holes 
+\item Luminosity distance to binary $D_L$
+\item Inclination angle $\iota$
+\item RA and dec (position in sky)
+\item ..and so on
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Introduction}
+  Why do we need parameter estimation?
+\begin{itemize}
+\item Accurate parameter estimation required for science (eg. population
+  studies, tests of GR)
+\item Fast algorithms can help follow-up observations
+
+\end{itemize} 
+\end{frame}
+
+\begin{frame}{Bayes' Theorem}
+
+Updating and maximizing our knowledge from the data and our prior belief
+\begin{center}
+  $$
+  p_{post}(\lambda, \theta) =
+  \frac{\mathcal{L}(\lambda, \theta) p(\theta)p(\lambda)}
+  {\int d\lambda d\theta \mathcal{L}(\lambda, \theta) p(\lambda) p(\theta)}
+  $$
+\end{center}
+  
+\begin{itemize}
+\item Posterior $p_{post}$ - probability of parameter value to be correct given the
+  data. This is what we are looking for
+\item Likelihood $\mathcal{L}$ - probability of data assuming model is true i.e.
+  how well does the model parameter fit the data
+\item Prior $p(\theta)p(\lambda)$ - what we think the model parameter PDF looks like
+\item Evidence - normalization constant, important for model selection
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Bayes' Theorem}
+
+  Updating and maximizing our knowledge from the data and our prior belief
+\begin{center}
+  $$
+  p_{post}(\red{\lambda}, \blue{\theta}) =
+  \frac{\mathcal{L}(\red{\lambda}, \blue{\theta}) p(\blue{\theta})p(\red{\lambda})}
+  {\int d\red{\lambda} d\blue{\theta} \mathcal{L}(\red{\lambda}, \blue{\theta}) p(\red{\lambda}) p(\blue{\theta})}
+  $$
+\end{center}
+  
+\begin{itemize}
+\item \red{$\lambda$} - Intrinsic parameters, describes dynamics of binary
+\item \blue{$\theta$} - Extrinsic parameters, describes space and time orientation
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Models}
+Templates for aligned spin 
+  \begin{itemize}
+  \item SEOBNRv4 - Effective-one-body model
+  \item IMRPhenomD
+    \item Numerical Relativity (NR) simulations - solving Einstein's equations on
+      a computer. Very expensive to compute, but gives most accurate results
+\pause
+    \item Surrogate models
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Surrogate Models}
+  \begin{itemize}
+    \item Fast and accurate evaluation using reduced order modeling (ROM)
+  \item No assumptions of underlying model
+    \item Will converge to the model by improving representation
+    \item Need to specify model and range of parameters
+    \item Non-intrusive
+      \item gwsurrogate - Publicly available package
+        
+\end{itemize}
+
+\end{frame}
+
+  \begin{frame}{NR Surrogate Models}
+    NRHybSur3dq8
+    \begin{itemize}
+\item Aligned spin hybrid model made by stitching together PN for early inspiral, NR simulation
+  for the rest
+\item Contains higher modes upto lmax $\le$ 5
+\item Training region: 1 $\le$ q $\le$ 8, −0.8 $\le$ $\chi_{1z/2z}$ $\le$ 0.8. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{NRHybSur3dq8}
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width=.70\linewidth]{ModelErrors.png}
+      \caption{Errors in the NRHybSur3dq8 model against NR-PN/EOB hybrid
+        waveforms.
+        From Varma et al. (2018, in prep)}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{NRHybSur3dq8}
+    \begin{figure}
+    \begin{center}
+      \includegraphics[width=.70\linewidth]{SurrogateTrainingSet.png}
+      \caption{.The parameter space covered by the 104 NR waveforms (circle markers) used in the construction of the surrogate model. From Varma et al. (2018, in prep)}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Inference algorithms}
+  LALInference (LIGO)
+  \begin{itemize}
+  \item Using variants of optimized MCMC and nested sampling
+  \item Well-tested and reliable
+   \item Doesn't scale well to massive ($>$1000) core counts
+  \item Model must be made available in LALSimulation (need low level C to interface)
+  \end{itemize}
+  \medskip
+  \pause
+ILE (with RIFT extensions) (Pankow et al.(2015) and Lange et al.(2018))
+\begin{itemize}
+\item Fast highly parallelized algorithm  
+\item Easily extended with other models (using Python)
+\end{itemize}
+\medskip
+\pause
+  gwin (in development, Capano et al.) 
+  \begin{itemize}
+  \item Next gen python package for parameter estimation
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Inference algorithms}
+  ILE+RIFT
+  \begin{itemize}
+  \item Specify and separate intrinsic and extrinsic parameters
+  \item Lay out grid on intrinsic parameters
+     \item Independent, Parallelized, Log-Likelihood calculation over each grid
+       point using Monte Carlo Integration and marginalization of extrinsic parameters
+     \item Gaussian Process Regression to interpolate over grid points with high
+       likelihood
+      \item Setup for next iteration over new interpolated grid
+      \end{itemize}
+\end{frame}
+
+\begin{frame}{MGHPCC}
+  Massachusetts Green High Performance Computing Center
+  \begin{itemize}
+    \item Developed as a joint venture of Boston University, Harvard, MIT,
+      Northeastern, and the University of Massachusetts system
+%    \item Contains hundreds of thousands of cores
+    \item Can be accessed by UMass students under participating faculty
+    \end{itemize}
+    \begin{figure}
+    \begin{center}
+      \includegraphics[width=.40\linewidth]{mghpcc.jpg}
+      \caption{The MGHPCC facility at Holyoke, Massachusetts}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Progress so far}
+  \begin{itemize}
+  \item Interfacing the new model with the codebase
+  \item Performing test runs on a local cluster at RIT
+  \item Setting up the codebase at MGHPCC to begin PE runs
+  \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Preliminary Results}
+    
+    \begin{itemize}
+    \item Preliminary is the key word here
+      \item Signal injected and PE study done using same model
+      \item Sparse grid, only 5 points per dimension
+        \item SNR ~ 20
+
+      \item $m_1$ = 56
+    \item $m_2$ = 14
+    \item $\chi_{1z}$ = -0.5
+    \item $\chi_{2z}$ = 0.5
+    \end{itemize}
+    
+  \end{frame}
+
+  \begin{frame}
+    \begin{figure}
+      \begin{center}
+        \includegraphics[width=.70\linewidth]{mspin.png}
+        \caption{}
+      \end{center}
+    \end{figure}
+    \end{frame}
+
+  \begin{frame}
+    \begin{figure}
+      \begin{center}
+        \includegraphics[width=.70\linewidth]{mcetachiE.png}
+        \caption{}
+      \end{center}
+    \end{figure}
+    \end{frame}
+
+    \begin{frame}{Conclusion}
+      Remarks
+      \begin{itemize}
+      \item First PE study with this new model
+       \item NR surrogates provide fast and accurate waveform models
+    \item ILE+RIFT performs rapid parameter estimation using parallelized
+      computation in order of hours
+\end{itemize}
+   
+      \medskip
+      Future Outlook
+      \begin{itemize}
+      \item Investigate effects of higher harmonic modes
+      \item Understand bias in PE studies using statistical techniques
+        \item Compare with other models
+        \end{itemize}
+      \end{frame}
+
+      
+%\frametitle{Surrogate models (without matter)}
+%
+%\vspace{-60pt}
+%\begin{small}
+%\begin{columns}
+%  \begin{column}{.43\linewidth}
+%    \begin{figure}
+%    \begin{center}
+%      \includegraphics[width=.99\linewidth]{SurrogateMap_v3}
+%    \end{center}
+%    \end{figure}
+%  \end{column}
+%  \begin{column}{.57\linewidth}
+%%\structure{Model building}
+%\begin{itemize}
+%%\item Building model-specific basis, closed-form waveform models
+%\item Closed-form waveform models
+%\begin{itemize}
+%\item Cannon et al. (2010, 2012, 2013), Field et al. (2011, 2012), Kaye (2012), Smith et al. (2013, 2016), Doctor et al. (2017)
+%\end{itemize}
+%\item Nonspinning, multimode effective one body (EOB) 
+%\begin{itemize}
+%\item Field et al., (PRX 2014)
+%\end{itemize}
+%\item Spinning, single-mode EOB
+%\begin{itemize}
+%\item Purrer, (CQG 2014, PRD 2016)
+%\end{itemize}
+%\item Multi-mode numerical relativity (\red{restrictive intervals})
+%\begin{itemize}
+%\item Blackman, SF,+ 2015 (non-spinning),\\
+% Blackman, SF,+ 2017 (5d subspace), \\
+%Blackman, SF,+ 2017 (full 7d)
+%\end{itemize}
+%\end{itemize}
+%  \end{column}
+%\end{columns}
+%\end{small}
+%
+%\vspace{-40pt}
+%\red{Current work}: PEOB, extensions in time (Vijay Varma; Mon), tidal effects (Kevin Barkett; Tues)
+%%\red{Describe common choices, reason for differences, how intervals effect speedup.}
+%
+%\end{frame}
+%
+%\begin{comment}
+%\begin{frame}
+%\frametitle{Surrogate utility}
+%
+%\begin{itemize}
+%\item EOB surrogate models enable speed up factors of between $10^2$ - $10^3$
+%\item NR surrogate models as fast as closed-form models
+%\item Over the past two years, their usage has gone from none to extensive
+%\begin{itemize}
+%\item EOB surrogate model of Purrer used in official LIGO searches/PE. 
+%\item NR models used in studies of GW memory, parameter estimation, with others underway
+%\item With more GW observations at higher SNR, NR surrogates should become increasingly important 
+%\end{itemize}
+%\end{itemize}
+%
+%\vspace{-20pt}
+%
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[width=.45\linewidth]{Speedup_v2SS_mass_etas}
+%  \includegraphics[width=.42\linewidth]{EOB_ExampleTiming}
+%\end{center}
+%\end{figure}
+%
+%\end{frame}
+%\end{comment}
+%
+%%\section{Building} 
+%
+%\begin{frame}{Top-level NR surrogate building workflow}
+%
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[width=.95\linewidth]{SurrogateWorkflow}
+%\end{center}
+%\end{figure}
+%
+%\end{frame}
+%
+%\begin{comment}
+%\begin{frame}{Parameter space of a dimensionless waveform model}
+%
+%\begin{small}
+%\begin{columns}
+%  \begin{column}{.35\linewidth}
+%\begin{itemize}
+%\item Mass ratio $q$
+%\item Spins $\vec{\chi}_1$ and $\vec{\chi}_2$
+%\item Sampling strategies 
+%\begin{itemize}
+%\item Greedy (reduced basis) 
+%\item Model feedback
+%\item PN-sampler
+%\item Sparse grid 
+%\item Randomized
+%\end{itemize}
+%\end{itemize}
+%  \end{column}
+%  \begin{column}{.62\linewidth}
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[width=.95\linewidth]{BBH_diagram}
+%\end{center}
+%\end{figure}
+%  \end{column}
+%\end{columns}
+%
+%\begin{itemize}
+%\item For physical waveforms, the total mass can be scaled back
+%\item All NR models of duration $4,500$M before the peak amplitude
+%%\item Modes are either $\ell \leq 3$ (5d), $\ell \leq 4$ (7d), $\ell \leq 8$ (1d)
+%\end{itemize}
+%\end{small}
+%
+%\end{frame}
+%
+%
+%\begin{frame}{Top-level NR surrogate building workflow}
+%
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[width=.95\linewidth]{SurrogateWorkflow}
+%\end{center}
+%\end{figure}
+%
+%\medskip
+%\begin{itemize}
+%\item Even with good sampling strategies, coverage is sparse (\red{Bad!})
+%\item \red{Key}: Transform/decompose the data to look boring (minimal variation)
+%\end{itemize}
+%
+%\end{frame}
+%\end{comment}
+%
+%\begin{frame}{Waveform decomposition+approximation (non-spinning)}
+%
+%\begin{columns}
+%  \begin{column}{.44\linewidth}
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[width=.99\linewidth]{EOB_ExampleDEIM.pdf}
+%\end{center}
+%\medskip
+%\medskip
+%Amplitude/phase decomposition: 
+%\begin{align*}
+%h(t;q) = A(t;q) \exp\left(-\mathrm{i}\phi(t;q)\right)
+%\end{align*}
+%\end{figure}
+%  \end{column}
+%  \begin{column}{.55\linewidth}
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[width=.75\linewidth]{EOB_ExampleAmpPhi.pdf}
+%\end{center}
+%\end{figure}
+%  \end{column}
+%\end{columns}
+%
+%\end{frame}
+%
+%% this block is from FullTalk.tex [useful for showing EIM in context of simpler case]
+%\begin{comment}
+%\begin{frame}
+%\frametitle{Setup}
+%
+%\structure{Surrogate waveform model} is defined by 
+%%$h_{\rm S}(t,\theta,\phi; q) = \sum_{\ell,m} h^{\ell, m}_{\rm S}(t; q) {}_{-2}Y_{\ell m} \left(\theta, \phi \right)$ where
+%\begin{align*}
+%\begin{split}
+%       h_{\rm S}(t,\theta,\phi; q) & = \sum_{\ell,m} h^{\ell, m}_{\rm S}(t; q) {}_{-2}Y_{\ell m} \left(\theta, \phi \right) \, \\
+%	h^{\ell, m}_{\rm S}(t; q) & = A^{\ell, m}_{\rm S} (t; q) e^{-i \varphi^{\ell, m}_{\rm S} (t; q)}  \, ,   \\
+%	X_{\rm S}^{\ell, m} (t; q) &= \sum_{i=1}^{N_X} \red{B^{\ell, m}_{X,i}} (t) \blue{X^{\rm \ell, m}_i} (q)  \, , ~~ X = \{A, \varphi\} .
+%\end{split}
+%\end{align*}
+%
+%\begin{itemize}
+%\item \red{$\{B^{\ell m}_{X,i} \}_{i=1}^{N_X}$}: model-specific basis 
+%functions for the amplitudes, $\{B^{\ell m}_{A,i} \}_{i=1}^{N_A}$, and the phases $\{B^{\ell m}_{\varphi,i} \}_{i=1}^{N_{\varphi}}$
+%\item \blue{$X^{\ell m}_i(q)$}: Functions which approximate the parametric variation of the amplitudes, $A^{\ell, m}(\green{T^{\ell m}_{A,i}}; q)$,
+%and phases, $\varphi^{\ell, m}(\green{T^{\ell m}_{\varphi,i}}; q)$ {\em at a fixed time}
+%\item \green{$\{ T^{\ell m}_{X,i} \} _{i=1}^{N_X}$}: the {\em empirical} interpolation nodes/times (Maday, 2009) which guarantees accurate interpolation with the basis
+%
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%\begin{frame}
+%\frametitle{Idealization}
+%
+%Suppose we could train our surrogate with arbitrarily many numerical relativity waveforms...
+%
+%\medskip
+%\medskip
+%\structure{Existing procedure} (Phys.Rev. X4 (2014) 3, 031006)
+%\begin{enumerate}
+%\item Greedy algorithm to build the basis
+%\item Empirical interpolation algorithm to find the interpolation times
+%\item Fits (polynomial) of the amplitude and phase data
+%\end{enumerate}
+%
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Surrogate model schematic}
+%
+%\vspace{-10pt}
+%\begin{small}
+%\begin{columns}
+%  \begin{column}{.3\linewidth}
+%    \begin{figure}
+%    \begin{center}
+%      \includegraphics[width=1.09\linewidth]{cartoon_4} 
+%    \end{center}
+%    \end{figure}
+%  \end{column}
+%  \begin{column}{.65\linewidth}
+%    \red{1.} Amplitude/phase basis \red{$B^{\ell, m}_{A,i} (t)$, 
+%$B^{\ell, m}_{\varphi,i} (t)$} built from the NR waveforms
+%themselves \red{$h(t;q_i)$}\\[5pt]
+%%parameters \red{$q_i$}
+%%built from \red{$h_i^{\rm RB}(t)$}
+%\pause
+%    \blue{2.} Specially selected times \blue{$T^{\ell m}_{A,i}$, $T^{\ell m}_{\varphi,i}$}
+%uniquely determined by the basis\\[5pt]
+%\pause
+%    \blue{3.} Parametric fits \blue{$A^{\ell m}_i(q)$, $\varphi^{\ell m}_i(q)$} at each \blue{$T^{\ell m}_{A,i}$, $T^{\ell m}_{\varphi,i}$}\\[5pt]
+%\pause
+%    \yellow{4.} Evaluate the surrogate at parameter value (yellow dot) by i) evaluating the fits at each \blue{$T_i$} which ii) specifies the full waveform as:
+%%through an (empirical) interpolant:
+%%
+%%    \begin{align*}
+%%     h^{\rm S}_{\mu}(t) \equiv \sum_{i=1}^m B_i (t) h^{\rm FIT}_{\mu}(T_i) \, 
+%%    \end{align*}
+%%where $\{B_i\}$ is built from \red{$h_i^{\rm RB}(t)$}
+%\begin{align*}
+%\begin{split}
+%  A_{\rm S}^{\ell, m} (t; q) &= \sum_{i=1}^{N_A} B^{\ell, m}_{A,i} (t) A^{\rm \ell, m}_i(q)  \, , \\
+%  \varphi_{\rm S}^{\ell, m} (t; q) &= \sum_{i=1}^{N_{\varphi}} B^{\ell, m}_{\varphi,i} (t) \varphi^{\rm \ell, m}_i(q)  \, , \\
+%  h^{\ell, m}_{\rm S}(t; q) & = A^{\ell, m}_{\rm S} (t; q) e^{-i \varphi^{\ell, m}_{\rm S} (t; q)}  \, , \\
+%  h_{\rm S}(t,\theta,\phi; q) & = \sum_{\ell,m} h^{\ell, m}_{\rm S}(t; q) {}_{-2}Y_{\ell m} \left(\theta, \phi \right) \, .
+%\end{split}
+%\end{align*}
+%  \end{column}
+%\end{columns}
+%\end{small}
+%
+%\end{frame}
+%\end{comment}
+%
+%
+%\begin{comment}
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[width=.70\linewidth]{SurrogateWaveformDecomposed.png}
+%\end{center}
+%\end{figure}
+%
+%\medskip
+%\begin{itemize}
+%\item NR waveform data is decomposed into easier-to-model pieces
+%\item High-dimensional (least squares) fit for each piece [\red{approximation}]
+%\item Reassemble pieces to evaluate the model
+%\end{itemize}
+%\end{comment}
+%
+%\begin{frame}{Waveform decomposition+approximation (precessing)}
+%
+%\begin{columns}
+%  \begin{column}{.7\linewidth}
+%    \begin{figure}
+%    \begin{center}
+%      \includegraphics[width=.95\linewidth]{SurrogateWaveformDecomposed.png}
+%    \end{center}
+%    \end{figure}
+%  \end{column}
+%  \begin{column}{.3\linewidth}
+%\begin{itemize}
+%\item NR waveform data is decomposed into easier-to-model pieces
+%\item High-dimensional (least squares) fit for each piece [\red{approximation}]
+%\item Reassemble pieces to evaluate the model
+%\item Cross-validation study to assess model error
+%\end{itemize}
+%  \end{column}
+%\end{columns}
+%
+%\end{frame}
+%
+%\begin{comment}
+%\begin{frame}{Top-level NR surrogate building workflow}
+%
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[width=.95\linewidth]{SurrogateWorkflow}
+%\end{center}
+%\end{figure}
+%
+%\medskip
+%\begin{itemize}
+%\item How accurate is the surrogate?
+%\end{itemize}
+%
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Cross-validation (mismatch) studies}
+%
+%\medskip
+%\medskip
+%For set of 886 training NR waveforms we...
+%
+%\pause
+%\begin{enumerate}
+%\item Randomly divide into 20 sets of $44$ or $45$  \pause
+%\item We build a {\em trial} surrogate using 19 of these 20 sets, the held-out set is for validation \pause
+%\item Evaluate the trial surrogate and compare to the validation set (repeating this 19 more times) \pause
+%\item These cross-validation errors are an honest prediction of the error
+%\end{enumerate}
+%
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[width=.65\linewidth]{mismatch_hist.pdf}
+%\end{center}
+%\end{figure}
+%
+%\end{frame}
+%
+%%\section{Public NR models}
+%
+%\begin{frame}{Where are the public models?}
+%
+%\red{Data}\\ 
+%\url{https://www.black-holes.org/data/surrogates}\\[15pt]
+%
+%\medskip
+%\medskip
+%\red{Evaluation code}\\
+%GWSurrogate (\url{https://pypi.python.org/pypi/gwsurrogate/})\\
+%\url{https://www.black-holes.org/data/surrogates/}
+%
+%\end{frame}
+%
+%\begin{frame}{What is ``surrogate data"?}
+%
+%To use a surrogate model you need a (i) surrogate data file and (ii) the code (ie. rules) for evaluation. 
+%
+%\medskip
+%\medskip
+%\medskip
+%\medskip
+%\structure{Data}
+%\begin{itemize}
+%\item Training values (SpEC parameter values)
+%\item Basis for temporal dependence (reduced basis or singular value basis)
+%\item Coefficients for decomposed data piece's representation in this basis 
+%\item Coefficients for the parameter fits for each decomposed data piece
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%\begin{frame}{What are the public models?}
+%
+%\begin{columns}
+%  \begin{column}{.39\linewidth}
+%{\small
+%\structure{1d non-spinning}
+%\begin{itemize}
+%\setlength{\itemsep}{1pt}
+%\item $q \in [1,10]$
+%\item $\ell \leq 8$ modes
+%\item Used $22$ SpEC simulations
+%\end{itemize}
+%
+%\smallskip
+%\structure{5d precessing} (GW150914-like)
+%\begin{itemize}
+%\setlength{\itemsep}{1pt}
+%\item $q \in [1,2]$, $| \chi_i | \leq  0.8$
+%\item $\vec{\chi}_2 \propto \hat{L}$  (initially)
+%\item $\ell \leq 3$ modes
+%\item Used $276$ SpEC simulations
+%\end{itemize}
+%
+%\smallskip
+%\structure{7d precessing}
+%\begin{itemize}
+%\setlength{\itemsep}{1pt}
+%\item $q \in [1,2]$, $| \chi_i | \leq  0.8$
+%\item $\ell \leq 4$ modes
+%\item Used $744$ SpEC simulations
+%\end{itemize}
+%}
+%  \end{column}
+%  \begin{column}{.58\linewidth}
+%    \begin{figure}
+%    \begin{center}
+%%      \includegraphics[width=1\linewidth]{waveform}
+%%\caption{The largest surrogate error (1d, nonspinning) is for $q \approx 2$, for which the $(2,2)$ mode is shown.}
+%\includegraphics[width=1\linewidth]{GenericPrecessingWaveform.png}
+%\caption{Generic precessing waveform from 7d NR surrogate model evaluation}
+%    \end{center}
+%    \end{figure}
+%  \end{column}
+%  \end{columns}
+%\end{frame}
+%
+%\end{comment}
+%
+%\begin{frame}{GWSurrogate Python package}
+%
+%\red{Goals}:
+%\begin{itemize}
+%\item Surrogate-building codes and data are model-specific (sometimes very different)
+%\item GWSurrogate: easy to install, easy to use, Python\{2,3\}-based
+%\item Current catalog of surrogate models + data access tools
+%\item Low-level API allows access of modes, basis functions, fits, and other surrogate data
+%\end{itemize}
+%
+%\medskip
+%Why not just use LALSimulation? \pause Some models will be ported (code review underway!), but...
+%\begin{itemize}
+%\item Not everyone can or should need to install LALSimulation to use surrogates
+%\item Its unlikely that for each new surrogate there will be LALSimulation counterpart
+%\item Having multiple codes to evaluate the same model is good for the community
+%\item GWSurrogate allows for low-level access of surrogate data
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%\begin{comment}
+%\begin{ipython}[]
+%>>> import gwsurrogate as gws
+%>>> gws.catalog.list() # view all available models, example...
+%NRSur4d2s_TDROM_grid12...
+%  url: https://zenodo.org/record/1215824/files/NRSur4d2s_TDROM_grid12.h5
+%  Description: Fast time-domain surrogate model for binary black hole mergers where the
+%               black holes may be spinning, but the spins are restricted to a parameter
+%               subspace which includes some but not all precessing configurations.
+%  References: https://journals.aps.org/prd/abstract/10.1103/PhysRevD.95.104023
+%>>> gws.catalog.pull('NRSur4d2s_TDROM_grid12') # download the surrogate data
+%>>> spec = gws.EvaluateSurrogate('NRSur4d2s_TDROM_grid12.h5') # create surrogate model spec
+%>>> modes_list, time, hp, hc = spec([1.50, 0.60, .505, .2, 0.7])
+%\end{ipython}
+%\end{comment}
+%
+%%\begin{verbatim}
+%%>>> pip install gwsurrogate
+%%\end{verbatim}
+%
+%\begin{frame}[fragile]{Quick start (installation + catalog)}
+%
+%{\footnotesize
+%Installation: 
+%\begin{verbatim}
+%>>> pip install gwsurrogate 
+%\end{verbatim}
+%
+%\medskip
+%\pause
+%Query the catalog: 
+%\begin{ipython}[]
+%>>> import gwsurrogate as gws
+%>>> gws.catalog.list()
+%NRSur4d2s_TDROM_grid12...
+%  url: https://zenodo.org/record/1215824/files/NRSur4d2s_TDROM_grid12.h5
+%  Description: Fast (spline) time-domain surrogate model. Spins are restricted to a 
+%               subspace which includes some but not all precessing configurations.
+%  References: https://journals.aps.org/prd/abstract/10.1103/PhysRevD.95.104023
+%>>> gws.catalog.pull("NRSur4d2s_TDROM_grid12") # Download the surrogate data
+%\end{ipython}
+%}
+%
+%Currently, 6 surrogate models are available. Each has a name, dataset url, description, and reference. 
+%
+%\end{frame}
+%
+%\begin{comment}
+%\begin{frame}{Quickstart}
+%
+%\begin{itemize}
+%\item \url{https://pypi.python.org/pypi/gwsurrogate}
+%\begin{itemize}
+%\item $>>>$ pip install gwsurrogate
+%\medskip
+%\medskip
+%\end{itemize}
+%\pause
+%\item Data files can be downloaded from a public location
+%\begin{itemize}
+%\item Non-spinning multi-mode effective one body surrogates
+%\item Multi-modal non-spinning numerical relativity SpEC surrogate
+%\item Recent 5d and 7d models are being implemented (\red{Coming soon!})
+%\end{itemize}
+%\item Low-level API allows direct access of modes, basis functions, and fits
+%\begin{itemize}
+%\item Leveraged to accelerate the ILE parameter estimation pipeline (O'Shaughnessy, SF+ 2017)
+%\end{itemize}
+%\end{itemize}
+%
+%\end{frame}
+%\end{comment}
+%
+%
+%\begin{frame}[fragile]{Quick start (evaluation)}
+%
+%{\footnotesize
+%\begin{ipython}[]
+%>>> import gwsurrogate as gws
+%>>> spec_precessing     = gws.EvaluateSurrogate("NRSur4d2s_TDROM_grid12.h5") # Load 
+%>>> modes, time, hp, hc = spec_precessing([1.50, 0.60, 0.505, 0.2, 0.7]) # Evaluate
+%>>> spec_nospin         = gws.EvaluateSurrogate("SpEC_q1_10_NoSpin.h5",excluded=[(8,7)]) # Load
+%>>> modes, time, hp, hc = spec_nospin(q=3.14) # Evaluate
+%\end{ipython}
+%}
+%
+%\vspace{-10pt}
+%\begin{figure}
+%\begin{center}
+%%  \includegraphics[width=.5\linewidth]{SpEC_q3pt14_22}
+%  \includegraphics[width=.42\linewidth]{SurrMemMode.png}
+%  \includegraphics[width=.42\linewidth]{SpEC_q3pt14_32}
+%\end{center}
+%\end{figure}
+%
+%\end{frame}
+%
+%\begin{frame}[fragile]{Some features}
+%
+%{\footnotesize
+%\begin{ipython}[]
+%>>> import gwsurrogate as gws
+%>>> spec = gws.EvaluateSurrogate("SpEC_q1_10_NoSpin.h5",ell=[2],m=[0]) # (2,0) only
+%>>> spec = gws.EvaluateSurrogate("SpEC_q1_10_NoSpin.h5",ell=[2,3],m=[2,2]) # (2,2), (3,2)
+%>>> spec22 = spec.single_mode_dict["(2,2)"] # access surrogate data for (2,2)-mode
+%>>> spec22.basis() # access basis functions defining the temporal dependence
+%>>> spec22.eim_coeffs() # Parametric dependence of the model (fit functions) 
+%
+%\end{ipython}
+%}
+%
+%\medskip
+%\medskip
+%Directly access surrogate data...
+%\begin{itemize}
+%\item Basis functions defining the temporal dependence
+%\item Parametric dependence of the model in closed-form (analytic derivatives)
+%\item ... and any additional data defining the model; mode-by-mode
+%\end{itemize}
+%
+%\end{frame}
+%
+%\begin{frame}
+%
+%\structure{Remarks}
+%\begin{itemize}
+%\item Surrogate and reduced order modeling offers an exciting new approach to overcome a variety of computationally challenging problems of GW physics
+%%\item Evaluations are fast and accurate
+%\item Publicly available surrogate evaluation package GWSurrogate 
+%\begin{itemize}
+%\item Numerous Jupyter tutorial notebooks
+%\item Active development (version 0.7 released last night)
+%\item Long-term plans: host on github -- happy to have feedback (open an issue)
+%%\item \url{https://pypi.python.org/pypi/gwsurrogate/}
+%\end{itemize}
+%\end{itemize}
+%
+%\medskip
+%\structure{Future outlook}
+%\begin{itemize}
+%\item Extending the range of validity of NR surrogates
+%\item As new models are built they will be included into the surrogate catalog
+%\item Contributions are welcomed! If you've built a surrogate model, we can happily add it to the catalog
+%%\item Precessing EOB surrogates
+%%\item NR surrogates will become increasingly important to GW data analysis efforts
+%%\item NR surrogates are being implemented in LIGO 
+%%\item Many open questions. Lots of work to be done!
+%\end{itemize}
+%
+%\end{frame}
+
+
+\end{document}
+

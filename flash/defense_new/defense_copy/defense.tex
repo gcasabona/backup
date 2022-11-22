@@ -1,0 +1,282 @@
+%  Used for...
+%
+%  1) APS New England Fall 2018 -- intro to NRHybSur3dq8 and RIFT
+%
+%
+%
+
+%\documentclass[compress]{beamer}
+\documentclass[uncompress,aspectratio=43]{beamer}  % APS
+
+\usetheme{Boadilla}
+\usecolortheme{beaver}
+
+% to wrap text around a figure
+\usepackage{wrapfig}
+
+\usepackage{tikz}
+
+% to wrap text around a figure
+\usepackage{wrapfig}
+
+\usepackage{setspace}
+
+% to split the top headliner
+%\usepackage{beamerthemesplit}
+
+\usepackage{multirow}
+
+\usepackage{dcolumn,epsfig}
+
+% for side captions (doesn't seem to work, neither does minipage. must use column environment)
+\usepackage{sidecap}
+
+% to displace animated graphics
+\usepackage{animate} %need the animate.sty file 
+\usepackage{graphicx} %needed if animating and creating pdf through latex -> dvi -> pdf
+
+\usepackage{algorithm}
+\usepackage{algpseudocode} % in place of algorithmic. Appears to conflict with revtex4 unless [H] option passed
+
+%allows comments for blocks of text
+\usepackage{verbatim} %with begin/end comment
+
+% fancy version of verbatim
+%\usepackage{fancyvrb}
+
+\usepackage{listings}
+
+% for fancy box options
+\usepackage{fancybox}
+
+\usepackage{tabls}
+\usepackage{subfigure}
+
+\usepackage{mathrsfs}
+
+\newfloat{program}{htbp}{pgm}
+\floatname{program}{Program}
+
+%\xdefinecolor{eqncolor}{rgb}{0,0.35,0}
+\xdefinecolor{eqncolor}{rgb}{0,0,0}
+\xdefinecolor{ec}{rgb}{0,0.35,0}
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
+% fancy code -- see: http://tex.stackexchange.com/questions/176163/problem-in-adding-a-title-to-tcolorbox
+% can pass general options to minted: %\begin{pythoncode}[colback=red!5!white,colframe=red!75!black,title=My nice heading]    
+\usepackage{tcolorbox}
+\tcbuselibrary{minted,skins,breakable}
+
+\setbeamersize{text margin left=.05cm,text margin right=.05cm}
+	\setbeamercolor{normal text}{fg=white, bg=black}
+
+
+\title[Detonation Initiation in SNe Ia]{Turbulently-Driven Detonation Initiation in Electron-Degenerate Matter with Helium}
+
+\author[Gabriel]{Gabriel Casabona}
+\institute[UMass Dartmouth]{Dept. of Physics, UMass Dartmouth}
+\date[Thesis Defense \today]{{Physics Day\\
+\today}
+}
+\scriptsize
+
+\begin{document}
+
+\frame{\titlepage
+
+\vspace{-39pt}
+
+  \begin{columns}[T]
+\hspace{10pt} 
+    \begin{column}{0.55\textwidth}
+
+    \end{column}
+    
+    \begin{column}{0.45\textwidth}
+      
+     \hspace{50pt} \includegraphics[width=.36\textwidth]{}
+  
+    \end{column}
+    
+  \end{columns}
+
+}
+
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+		\frametitle{\Large{Outline}}
+		\tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{frame}{Type Ia Supernovae}
+  \begin{itemize}
+   \item 
+   \item
+   \item
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Stellar Lifetime}
+
+\begin{itemize}
+\item 
+\item
+
+\item 
+\item
+\item
+\item
+\item
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{White Dwarf}
+Degeneracy Pressure
+\begin{itemize}
+\item 
+\item 
+
+\end{itemize} 
+\end{frame}
+
+\begin{frame}{Zel'Dovich Gradient Mechanism}
+
+\begin{center}
+\end{center}
+  
+\begin{itemize}
+\item
+\item 
+\item 
+\item
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Turbulence}
+Kolmogorov's Theory
+\begin{center}
+\end{center}
+  
+\begin{itemize}
+\item 
+\item
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Carbon Detonation}
+	"Previous Work"  
+  \begin{itemize}
+  \item 
+  \item
+    \item
+      
+    \item
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Helium Detonation}
+  \begin{itemize}
+	  \item Talk about double detonation, maybe D6
+  \item use vishal's video
+        
+\end{itemize}
+
+\end{frame}
+
+  \begin{frame}{Triple Alpha}
+    \begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Method}
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width=.70\linewidth]{}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Results}
+detonation times    
+\begin{figure}
+    \begin{center}
+      \includegraphics[width=.70\linewidth]{}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Results}
+  slice plots
+  \begin{itemize}
+  \item 
+  \item
+   \item
+  \item
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Results}
+  helium analytic curves
+  \begin{itemize}
+      \item 
+      \end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+  movies
+  \begin{itemize}
+    \item
+    \item
+    \end{itemize}
+    \begin{figure}
+    \begin{center}
+      \includegraphics[width=.40\linewidth]{}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Results}
+	PDFs
+\end{frame}
+
+\begin{frame}{Implications}
+  \begin{itemize}
+  \item
+  \item
+  \item
+  \end{itemize}
+  \end{frame}
+
+\begin{frame}{Future Work}
+    
+    \begin{itemize}
+    \item 
+      \item
+      \item
+        \item
+
+    \end{itemize}
+    
+  \end{frame}
+
+\begin{frame}{Credit}
+    \begin{figure}
+      \begin{center}
+        \includegraphics[width=.70\linewidth]{}
+      \end{center}
+    \end{figure}
+    \end{frame}
+
+
+\end{document}
+
