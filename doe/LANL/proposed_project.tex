@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+%\parindent = 0.0in
+
+\newcommand{\todo}[1]{{\color{red}{\it $\langle$todo$\rangle$} #1}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Provide a brief description of your proposed practicum project:
+(3000 character max)}
+
+
+Neutron star mergers are catastrophic cosmic events that are exciting for
+multiple reasons: they generate gamma-ray bursts -- brilliant flashes of 
+high-energy electromagnetic radiation; they produce powerful gravitational
+waves, detectable from billions of light-years away; and they are most likely
+the primary source of heavy r-process nucleosynthesis in nature. Recently, a
+few of them were discovered by gravitational wave detectors, LIGO and VIRGO, along with
+electromagnetic counterparts and high-energy neutrinos.
+Now, more accurate gravitational-wave templates are needed to decipher these
+and future detections.
+
+Neutron stars bear a solid crust, which is anticipated to have exceptional
+strength. Studies show that the crust can leave an observable imprint on the
+gravitational wave signal. In this practicum project, it is proposed to
+numerically examine how the crust affects tidal deformability of a neutron star 
+in equilibrium. Specifically, a neutron star with a crust will be prepared in
+an equilibrium state, and then subjected to a periodic quadrupolar perturbation,
+mimicking the gravitational field imposed from a companion in a binary system. The effect of the
+perturbation will be measured and employed for calculating corrected tidal
+deformability. The latter can then be plugged into post-Newtonian
+expressions for gravitational waves of a neutron star binary inspiral.
+
+The proposed study will be conducted using SPaRTA, a novel hybrid OpenMP/MPI,
+fully general-relativistic framework. This code is currently being developed
+at Los Alamos National Laboratory, and will be used for simulating neutron
+star mergers. The latter includes an adaptive curvilinear multi-block grid that
+can be fine-tuned to resolve the crust with very high accuracy.
+
+As a first step, we will work on the design of a crust-conforming
+curvilinear multi-block grid. We envision that the so-called ``cubed sphere''
+configuration is best suited for this problem. We will then work on
+load-balancing this configuration and optimizing the grid resolution for best
+performance. Finally, we will perform several fully general-relativistic 
+medium- and high-resolution runs of realistic configurations of neutron stars 
+subjected to periodic quadrupolar perturbations. Our findings will be
+summarized in a publication.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Describe the relationship, if any, of proposed practicum work
+with your thesis work: (2400 character max)}
+
+The main similarity between this project and my thesis work is that they both explore
+areas of general relativity. My thesis work is based on numerical relativity modeling, purely focusing on gravitational waves, whereas this practicum project will focus on the multi-physics problem of resolving the crust of the neutron-star, electromagnetic radiation of the breaking of the crust, and the exotic fluid-matter that is theorized to exist in the interior of the neutron star. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{List computational resources required for practicum project, if
+any: (2400 character max)}
+
+\todo{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Are you planning on utilizing any of the HPC resources at the
+lab? (2400 character max)}
+
+\todo{}
+
+\end{document}
+
