@@ -1,0 +1,57 @@
+Beverly Lowell: blr4968
+Gabriel Casabona: gce7806
+
+a) 	DEFAULT_NUM_ELEMENTS = 16777216 and MAX_RAND = 3
+
+(using the single-block version)
+	
+./lab4
+16777047.000000, 16777047.000000
+
+
+**===-------------------------------------------------===**
+Processing 16777216 elements...
+Host CPU Processing time: 46.550999 (ms)
+CUDA Processing time: 0.273000 (ms)
+Speedup: 170.516479X
+Test FAILED
+
+
+
+b) To preface, the code submitted works on an array that is a power of 2 in size.	
+
+To handle arrays not a power of two, we tried to follow the advice in the Mark Harris paper. The algorithm discussed in the paper starts off with taking our 1-dimensional array and separating its N elements it into some multiple of the number of elements processed in a block, B. B/2 threads per block is then allocated. The scan algorithm is then utlized on each block and stores the resulting elements into an output array. An auxiliary array is created so that the value of the sum of the individual blocks can be stored. The scan algorithm is used once again on this auxiliary array, with the results now being stored in another array, called INCR in the paper. All of the INCR blocks are then added up. The remaining elements of the input array are then scanned themselves, allowing for an arbitrary array size.    
+
+We attempted to implement this by creating a separate device fumnction 'summation' that is called by the kernel. Summation calculates a scan on an array of the last element of each threadblock. However, we could not get a multi-block grid to pass the test, so the call to summation was commented out and we turned in the working single-block version.
+
+We also tried to resolve bank conflicts using the Harris paper, but that separately did not work.
+
+
+
+c)	Calculation for a test that passes (an input array that's a power of 2 in size)
+:
+
+./lab4
+**===-------------------------------------------------===**
+Processing 512 elements...
+Host CPU Processing time: 0.128000 (ms)
+CUDA Processing time: 0.030000 (ms)
+Speedup: 4.266667X
+Test PASSED
+
+
+The theoretical performance limit for the GTX 680 is 3090 GFLOPS for FP32.
+clock speed: 1 MHz for GTZ 680
+threads: 1 FLOP core
+
+The GPU speed-up is over 4 times faster. For 512 elements, we use 256 threads in our single threadblock calculating in paralle
+l. This gives 242 MFLOPS which is 4 orders of magnitude slower than the peak performance.
+
+
+On the CPU, which is an Intel Xeon E5-1620, there's a clock speed of 3.6 GHz.
+CPU FLOPS : cores*1 flop/cycle * cycle/second = 1 * 1 * 3.6 flop/second = 3.6 GFLOPS
+	This is 1000 slower than the GPU.
+512/(.000128 sec) = 0.4 MFLOPS for the CPU
+
+
+The largest bottleneck is allocating memory from global to shared memory, and back. If we used higher performance machines, then bandwidth would also become a problem. All of this is besides the issues that we were not successful in incorporating multiple blocks.

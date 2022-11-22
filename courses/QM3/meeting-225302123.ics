@@ -1,0 +1,57 @@
+BEGIN:VCALENDAR
+PRODID:-//zoom.us//iCalendar Event//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+CLASS:PUBLIC
+BEGIN:VTIMEZONE
+TZID:America/Chicago
+TZURL:http://tzurl.org/zoneinfo-outlook/America/Chicago
+X-LIC-LOCATION:America/Chicago
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0500
+TZNAME:CDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0600
+TZNAME:CST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20200407T001858Z
+DTSTART;TZID=America/Chicago:20200407T093000
+DTEND;TZID=America/Chicago:20200407T110000
+SUMMARY:2020SP_PHYSICS_412-3_SEC20 Quantum Mechanics
+RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20200609T160000;INTERVAL=1;BYDAY=TU,TH
+UID:ZOOM225302123
+TZID:America/Chicago
+DESCRIPTION:Andrew Geraci is inviting you to a scheduled Zoom meeting.\n\
+ nJoin Zoom Meeting\nhttps://northwestern.zoom.us/j/225302123?pwd=V0h1bWs
+ 2NGV4Yk1pajRreWVhdm1iQT09\n\nMeeting ID: 225 302 123\nPassword: Phys412-
+ 3\n\nOne tap mobile\n+13126266799\,\,225302123# US (Chicago)\n+192943628
+ 66\,\,225302123# US (New York)\n\nDial by your location\n        +1 312 
+ 626 6799 US (Chicago)\n        +1 929 436 2866 US (New York)\n        +1
+  301 715 8592 US\n        +1 346 248 7799 US (Houston)\n        +1 669 9
+ 00 6833 US (San Jose)\n        +1 253 215 8782 US\nMeeting ID: 225 302 1
+ 23\nFind your local number: https://northwestern.zoom.us/u/aep13SooVL\n\
+ nJoin by SIP\n225302123@zoomcrc.com\n\nJoin by H.323\n162.255.37.11 (US 
+ West)\n162.255.36.11 (US East)\n221.122.88.195 (China)\n115.114.131.7 (I
+ ndia Mumbai)\n115.114.115.7 (India Hyderabad)\n213.19.144.110 (EMEA)\n10
+ 3.122.166.55 (Australia)\n209.9.211.110 (Hong Kong)\n64.211.144.160 (Bra
+ zil)\n69.174.57.160 (Canada)\n207.226.132.110 (Japan)\nMeeting ID: 225 3
+ 02 123\nPassword: 572823\n
+LOCATION:https://northwestern.zoom.us/j/225302123?pwd=V0h1bWs2NGV4Yk1pajR
+ reWVhdm1iQT09
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR

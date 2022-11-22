@@ -1,0 +1,30 @@
+Beverly Lowell blr4968
+Gabriel Casabona gce7806
+
+In your kernel implementation of tiled matrix multiplication, how many threads can be simultaneously scheduled for execution on	a GeForce GTX-680 GPU?
+
+
+In our implementation, we are using NxN tiles, with N = 32 threads. Therefore, each block has 1024 elements. The GeForce GTX-680 GPU can simultaneously run 16 blocks or 2048 threads at a time, whichever maxes out first. Since our blocks only have 1024 elements each, we can only run two blocks simultaneously.
+
+When running the command,
+
+nvcc -gencode=arch=compute_30,code=\"sm_30,compute_30\"
+--ptxas-options=-v matrixmul_kernel.cu
+
+we get the following result:
+
+======== NVPROF is profiling lab2...
+======== Command: lab2
+P size: (350, 629) 
+Executing!
+Num blocks (x,y): (11, 20)
+GPU computation complete
+CPU computation complete
+Test PASSED
+======== Profiling result:
+ Time(%)      Time   Calls       Avg       Min       Max  Name
+   60.93  847.81us       1  847.81us  847.81us  847.81us  MatrixMulKernel(Matrix, Matrix, Matrix)
+   29.61  411.97us       3  137.32us   95.62us  173.47us  [CUDA memcpy HtoD]
+    9.47  131.71us       1  131.71us  131.71us  131.71us  [CUDA memcpy DtoH]
+
+
