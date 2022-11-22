@@ -1,0 +1,374 @@
+\documentclass[12pt,defaultstyle]{umassdthesis_new}
+
+\usepackage[T1]{fontenc}
+
+%\usepackage[latin1]{inputenc} %% I was getting errors
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\usepackage{multirow,hhline,dcolumn} % useful commands for Tables
+%\usepackage[toc]{appendix}
+%\usepackage[pages]{appendix}
+\usepackage{mathrsfs} 
+\usepackage{hyperref}
+%\usepackage{cite}
+
+%%  user defined commands
+\newcommand{\linefrac}[2]{\raisebox{.6ex}{#1}/\raisebox{-0.6ex}{#2}} 
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08emT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\newcommand{\scri}{{\mathscr I}}
+
+
+%%  the entries below should be self-explanatory, some of these entries may
+%%  safely be excluded from the thesis, other are required.  LaTeX will
+%%  print a warning message if a required entry is not included.
+
+\title{Carbon Detonation Initiation in Highly Turbulent Electron-Degenerate Matter}
+
+\author{Pritom}{Mozumdar}
+
+\dept{Department of}{Physics}
+\college{College of}{Engineering}
+\conferraldate{May}{2018}
+
+%%  select the degree being earned
+%%  \degree{FULL NAME}{ABBREVIATION}
+%%
+%\degree{Undergraduate}{Undergraduate}
+%\degree{Honors}{Honors}
+%\degree{Master of Arts}{M.A.}
+%\degree{Master of Art Education}{M.A.Ed.}
+%\degree{Master of Fine Arts}{M.F.A.}
+\degree{Master of Science}{M.S.}
+\program{Physics}
+%%  PhD disertations have a few extra details such as the program name
+%%  this is to allow for the EAS and BMBMT programs
+%%\degree{Doctor of  Philosophy}{Ph.D.}
+%%  \phdprogram{PROGRAM NAME}{LABEL}
+%%
+%\phdprogram{Computer Engineering}{ECE}
+%\phdprogram{Biomedical Engineering and Biotechnology}{BMEBT}
+
+
+%%  advisors and readers have a professorial title, name and affiliation
+%%  but NOT degrees earned (ie. do not write Dr. Smith )
+%%
+\advisor{Associate Professor}{Robert Fisher}%
+{Physics}{University of Massachusetts Dartmouth}
+
+%%  co-advisors are allowed ....
+%%  sometime the co-advisor "replaces" a reader but other times there are 
+%%  also the full complement of readers. Undergraduate and Masters thesis
+%%  have two readers while in the case of Ph.D. dissertations, there are
+%%  three readers.  The classfile can cope with this ambiguity when 
+%%  generating the signature page.
+%% 
+%\coadvisor{Associate Professor}{Fred A. Dagg}%
+%{Physics}{University of Massachusetts Dartmouth}
+
+\readerone{Professor}{Gaurav Khanna}%
+{Physics}{University of Massachusetts Dartmouth}
+
+\readertwo{Assistant Professor}{Scott Field}%
+{Mathematics}{University of Massachusetts Dartmouth}
+
+%\readerthree{Postdoctoral Associate}{James Guillochon}%
+%{Center for Astrophysics}{Harvard University}
+
+%%  the rest of the entries on the signature page have a
+%%  professorial title and name (the affiliation will be UMASS DARTMOUTH)
+
+\graddirector{Robert Fisher}
+\deptchair{Grant V. O'Rielly}
+\collegedean{Ramprasad Balasubramanian}%%2217 line in .cls
+\gradstudies{Tesfay Meressi}
+%%  this is for Honors (undergraduate) theses
+%%\honorsdirector{Catherine Gardner}
+
+%%
+%%  THE ABSTRACT
+%%  ============
+%%
+%%  From the UMass Dartmouth Thesis Guide
+%%  "Requirements for Theses and Dissertations" (Spring 2015) 
+%%  
+%%  5.1.4 Abstract
+%%  --------------
+%%  The thesis or dissertation must contain an abstract    a concise summary of
+%%  the thesis or dissertation intended to inform a prospective reader about
+%%  its content. It usually includes a brief description of the problem
+%%  investigated, the procedures or methods used, the findings, and the
+%%  conclusions. It may use one or a few paragraphs; however, it is very rare
+%%  that an abstract should use more than two pages, and many use just one page. 
+%%
+\abstract[long]{%
+Type Ia supernovae (SNe Ia) are standardizable cosmological candles which led to the discovery of accelerating universe. However the physics of how white dwarfs explode and lead to SNe Ia is still poorly understood. The initiation of the detonation front which rapidly disrupts the white dwarf is a crucial element of the puzzle. Global 3D simulations of SNe Ia cannot resolve the length scales crucial to detonation initiation. In this work, we have performed local 3D hydrodynamical simulations of strongly-driven turbulence within electron-degenerate carbon-oxygen white dwarf matter. We show that intermittent dissipation of turbulent kinetic energy locally enhances the carbon nuclear burning rate by orders of magnitude above the mean. We demonstrate that within these local hot spots, the nuclear burning time becomes smaller than the eddy turnover time, and leads to a detonation. Thus turbulence plays a key role in creating the hot spots and preconditioning the carbon-oxygen fuel for a detonation.
+
+%%  the empty line before the closing brace is REQUIRED to ensure that 
+%%  the formatting of the abstract page is done correctly
+%%  !!DO NOT REMOVE THIS LINE!!
+
+}%
+%%  done the abstract !!
+
+%%
+%%  THE ACKNOWLEDGEMENTS
+%%  ====================
+%%
+%%  From the UMass Dartmouth Thesis Guide
+%%  "Requirements for Theses and Dissertations" (Spring 2015) 
+%%  
+%%  5.1.5 Acknowledgments
+%%  ---------------------
+%%  Short statements of acknowledgment of indebtedness (e.g., thanks to one  s
+%%  thesis or dissertation advisor, to other professors, to people who have
+%%  given support) may appear on a separate page right after the abstract. An
+%%  acknowledgments section is required if the author has received permission to
+%%  use previously copyrighted material or is obliged to acknowledge grant
+%%  sources. This section is present in most theses or dissertations and is used
+%%  to express a very specific professional or personal indebtedness. For
+%%  example, significant instances of collaboration with one or more others in
+%%  one  s thesis or dissertation work would probably need acknowledgment in a
+%%  Preface (see 5.1.8) or in this Acknowledgments section  for example, research
+%%  undertaken together with another student or use of much material from some
+%%  other investigator.
+%%
+%%  The acknowledgements should be written in a professional manner. When
+%%  writing the acknowledgments, be sure that your use of   person   is
+%%  consistent.  If you begin with references to yourself as   the author,  
+%%  continue to use third person throughout. If you begin with first person
+%%  (  I,     me,     my  ), use first person consistently.  There are two accepted
+%%  spellings of the word   acknowledgments   (the other is   acknowledgements  );
+%%  be sure to spell this word consistently.
+%%
+\acknowledgements{%
+I utilize the adaptive mesh refinement code FLASH 4.0.1. The FLASH software used in this work was in part developed by the DOE NNSA-ASC OASCR Flash Center at the University of Chicago. For plotting and analysis, I have made use of yt \cite {Turk_2011}, \url {http://yt-project.org/}. And a special thanks goes out to Dr. Robert Fisher for his guidance, insight and patience throughout this project.
+%%  the emply line before the closing brace is REQUIRED to ensure that 
+%%  the formating of the acknowledgments page is done correctly
+%%  !!DO NOT REMOVE THIS LINE!!
+
+}%
+%%  done the acknowledgements !!
+
+
+%%
+%%  THE PREFACE (optional)
+%%  ======================
+%%
+%%  From the UMass Dartmouth Thesis Guide
+%%  "Requirements for Theses and Dissertations" (Spring 2015) 
+%%  
+%%  5.1.8 Preface (optional)
+%%  ------------------------
+%%  Most theses or dissertations will not have a Preface, which is called for
+%%  only for unusual reasons, e.g., when the genesis of the work needs to be
+%%  explained or when the author  s contribution to a multiple-authored work must
+%%  be noted. If there is a preface, however, it would incorporate any
+%%  acknowledgments instead of those appearing as a separate section.
+%%  
+%%  Preface sections are rarely used.  The first chapter (sometimes called
+%%    Introduction  ) in the text section is the appropriate place for
+%%  explanations of the context or the motivations that underlie the research,
+%%  the research problem, the background of previous scholarship, notable
+%%  contributions by other scholars, and so forth. Use a   Preface   section only
+%%  for special purposes beyond such purposes as these; examples of such a
+%%  special purpose are covered in sections 7.4 and 8.5.
+%%  
+%%
+%%  7.4 Translations by the Author of Material Used
+%%  ----------------------------------------------- 
+%%  Material that you translate is still the intellectual property of the
+%%  author. It must be documented fully (its original-language source cited
+%%  properly and included in the bibliography). An appropriate note indicates by
+%%  whom it has been translated, by you or someone else. If a thesis or
+%%  dissertation will have extensive use of such material, this might be an
+%%  occasion for an explanation in a Preface.  Usually, translators of published
+%%  works will be indicated in the standard documentation of your notes and/or
+%%  bibliography.
+%% 
+%%  8.5 Collaborative Work That Will Appear in a Thesis or Dissertation
+%%  -------------------------------------------------------------------
+%%  A thesis or dissertation must represent work done principally if not
+%%  entirely by the author. When there are minor instances of research
+%%  collaboration, an appropriate citation may be used. If extensive, however,
+%%  the committee must approve it in detail and an explanation in a Preface
+%%  section is called for (see sections 5.1.8).
+%% 
+%%  
+%%  The preface should be written in a professional manner. When writing the
+%%  acknowledgments, be sure that your use of   person   is consistent.  If you
+%%  begin with references to yourself as â the author,â  continue to use third
+%%  person throughout. If you begin with first person (  I,     me,     my  ), use
+%%  first person consistently.  
+%%
+%\preface{%
+%  The text of the preface goes here.
+%%%  the emply line before the closing brace is REQUIRED to ensure that 
+%%%  the formatting of the preface page is done correctly
+%%%  !!DO NOT REMOVE THIS LINE!!
+%
+%}%
+%%%  done the preface !!
+
+
+%%
+%%  THE EPIGRAPH (optional)
+%%  =======================
+%%
+%%  Some authors include a quotation (epigraph) or illustration (frontispiece)
+%%  as the last of their preliminary pages. Neither should be listed in the
+%%  table of contents, although a frontispiece may be included in the list of
+%%  illustrations. The source of an epigraph is indicated below the quotation
+%%  but is not listed in the bibliography or references unless it is also
+%%  cited in the text. A page number need not be shown, but the page is
+%%  counted in the sequential page numbering.
+
+%%  The default option is a epigraph (text).
+%%  The two LaTeX commands below will produce the same output.
+%%
+%\epigraph{%
+%    \centering{To all of the fluffy kitties \ldots} 
+%%%  the emply line before the closing brace is REQUIRED to ensure that 
+%%%  the formating of the preface page is done correcty
+%%%  !!DO NOT REMOVE THIS LINE!!
+%
+%}%
+%\epigraph[epigraph]{%
+%    \centering{To all of the fluffy kitties \ldots}
+%%%  the empty line before the closing brace is REQUIRED to ensure that 
+%%%  the formating of the preface page is done correcty
+%%%  !!DO NOT REMOVE THIS LINE!!
+%
+%}%
+
+
+%%  To include an illustration, use the optional argument of 
+%%  frontispiece and the image file name as the second argument
+%%
+%%\epigraph[frontispiece]{einstein_bike}
+
+%%%  done the epigraph !!
+
+
+%%  need these if there are no Figure or Tables
+%%  otherwise evil things happen to the Table of Contents
+%\emptyLoF
+%\emptyLoT
+
+%%  uncomment to aviod generating prologue pages
+%\SuspendPrologue
+
+%%  All the prologue pages are done.  The thesis proper begins after here.
+
+%%
+%%  End of LaTeX preamble
+%%  =========================================================================
+
+%\usepackage[round]{natbib}
+%\usepackage{deluxetable}
+%\usepackage{bibentry}
+%\nobibliography*
+
+\newcommand {\arx} {arxiv}
+
+%%%%%%%%%%%%%%%%%%% usepackage commands %%%%%%%%%%%%%%%%%%%%%
+\usepackage{grffile}
+%\usepackage{deluxetable}
+%\setlength{\textfloatsep}{0.5in plus 1.0pt minus 1.0pt}
+%\setlength{\floatsep}{0.25in plus 1.0pt minus 1.0pt}
+%\setlength{\intextsep}{0.5in plus 1.0pt minus 1.0pt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{calc}
+
+%\graphicspath{{figures/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+%%  set the format required for the citations/references
+%%  \bibliographystyle{unsrt} is preferred for UMassD theses & dissertations.
+%%\bibliographystyle{unsrt}
+\bibliographystyle{plainnat}
+
+
+%%  The document text can be typed directly into this file or make use of
+%%  the LaTeX \input{filename} command to read the contents of the file
+%%  filename.tex.
+%%  The later method is a good way to logically organize the material.
+
+%%  INSERT THESIS BODY HERE
+
+%%  if using the LaTeX \imput command 
+\input{introduction}
+\input{chap-2.tex}
+\input{chap-3.tex}
+%%\input{conclusion}
+
+%\singleappendix
+%\input{appendix}
+
+
+
+%%%
+%%%  If there is ONE appendix use the \singleappendix command
+%%%
+%\singleappendix
+%\chapter{The Only Appendix}
+%
+%If there is only one appendix, it is called ``Appendix'' (not ``Appendix
+%A'').  
+%
+%To achieve this, use the command, {\tt $\backslash$singleappendix}
+%
+%\section{Appendictical Numbering}
+%\label{sample-appendix:numbering-section}
+%
+%The command, {\tt $\backslash$singleappendix} prints the appendix title without
+%the trailing A.
+%
+%\section{Getting the labels right \ldots}
+%
+%The {\tt $\backslash$singleappendix} command also ensures that the section and
+%subsection numbers don't include a leading A. and  that the the Table of
+%Contents, List of Figures and List of Tables entries for section, subsection,
+%equations, figures and tables don't have a leading period. 
+%
+%\begin{equation}
+%  a_{i} = b^{2x} + c\times\gamma - \frac{1}{5} \sin\theta
+%\end{equation}
+%
+%\begin{figure}[htbp]
+%% the optional arguments htbp tell LaTeX where on the page the figure 
+%% should be placed. In order this argument means try putting it "here", 
+%% at the "top", at the "bottom" or (as a last resort) on a seperate "page"
+%\begin{center}
+%  \includegraphics[width=0.40\textwidth,keepaspectratio]{sample_fig.png}
+%  \caption{
+%    \label{sample2-figure}% so we can cross-reference the figure
+%    This is a small figure.}%
+%  \end{center}
+%\end{figure}
+
+%%
+%%  End of any appendices
+%%  =========================================================================
+
+
+%%  At the end of the document are the references. These are single-spaced
+%%  rather than double-spaced like the rest of the thesis text.
+
+\begin{doublespace}
+     \input{ref.tex}
+\end{doublespace} 
+     
+%\end{singlespace}
+   
+\end{document}
+%% ===========
+%%    FINI
+%% ===========
